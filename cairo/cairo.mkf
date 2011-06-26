@@ -1,0 +1,134 @@
+upstream
+{
+	url="http://cairographics.org/releases/cairo-1.8.10.tar.gz"
+}
+
+options
+{
+	module_path_append="$AIRPLAY_ROOT/modules/third_party"
+	strict=0
+	extension=start_configure
+}
+
+files {
+	["Upstream Library Sources"]
+	(./upstream/src)
+	cairo-analysis-surface.c
+	cairo-arc.c
+	cairo-array.c
+	cairo-atomic.c
+	cairo-base85-stream.c
+	cairo-bentley-ottmann.c
+	cairo.c
+	cairo-cache.c
+	cairo-clip.c
+	cairo-color.c
+	cairo-debug.c
+	cairo-fixed.c
+	cairo-font-face.c
+	cairo-font-face-twin.c
+	cairo-font-face-twin-data.c
+	cairo-font-options.c
+	cairo-freelist.c
+	cairo-gstate.c
+	cairo-hash.c
+	cairo-hull.c
+	cairo-image-surface.c
+	cairo-lzw.c
+	cairo-matrix.c
+	cairo-meta-surface.c
+	cairo-misc.c
+	cairo-mutex.c
+	cairo-output-stream.c
+	cairo-paginated-surface.c
+	cairo-path-bounds.c
+	cairo-path.c
+	cairo-path-fill.c
+	cairo-path-fixed.c
+	cairo-path-stroke.c
+	cairo-pattern.c
+	cairo-pen.c
+	cairo-polygon.c
+	cairo-rectangle.c
+	cairo-region.c
+	cairo-scaled-font.c
+	cairo-skiplist.c
+	cairo-slope.c
+	cairo-spline.c
+	cairo-stroke-style.c
+	cairo-surface.c
+	cairo-surface-fallback.c
+	cairo-system.c
+	cairo-traps.c
+	cairo-unicode.c
+	cairo-user-font.c
+	cairo-version.c
+	cairo-wideint.c
+	["Upstream Library Sources (fonts)"]
+	(./upstream/src)
+	cairo-cff-subset.c
+	cairo-scaled-font-subsets.c
+	#cairo-truetype-subset.c
+	cairo-type1-fallback.c
+	#cairo-type1-subset.c
+    	cairo-type3-glyph-surface.c
+	["Upstream Library Sources (png support)"]
+	(./upstream/src)
+	cairo-png.c
+	#["cairo/svg"]
+	#(../src)
+	#cairo-svg-surface.c
+	["Porting Includes"]
+	(./)
+	cairo-features.h
+	cairo-airplay.h
+}
+
+includepaths
+{
+	"./"
+	"./upstream/src"
+}
+
+options {
+	module_path="$AIRPLAY_ROOT/modules/third_party"
+	module_path="../pixman"
+	preinclude="./cairo-airplay.h"
+	extension=start_configure
+}
+
+defines {
+	CAIRO_WIN32_STATIC_BUILD=1
+	CAIRO_CAN_TEST_SVG_SURFACE=1
+	CAIRO_NO_MUTEX=1
+	DISABLE_SOME_FLOATING_POINT=1
+	HAVE_BYTESWAP_H=1
+	HAVE_DLFCN_H=1
+	HAVE_FCNTL_H=1
+	HAVE_FLOCKFILE=1
+	HAVE_INTTYPES_H=1
+	HAVE_LIBGEN_H=1
+	HAVE_LINK=1
+	HAVE_MEMORY_H=1
+	HAVE_SCHED_H=1
+	HAVE_SETJMP_H=1
+	HAVE_SIGNAL_H=1
+	HAVE_STDINT_H=1
+	HAVE_STDLIB_H=1
+	HAVE_STRINGS_H=1
+	HAVE_STRING_H=1
+	HAVE_SYS_POLL_H=1
+	HAVE_SYS_SOCKET_H=1
+	HAVE_SYS_STAT_H=1
+	HAVE_SYS_TYPES_H=1
+	HAVE_SYS_UN_H=1
+	HAVE_UINT64_T=1
+	HAVE_UNISTD_H=1
+	STDC_HEADERS=1
+	X_DISPLAY_MISSING=1
+}
+
+subprojects {
+	libpng
+	pixman
+}

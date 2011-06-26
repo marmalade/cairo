@@ -1,0 +1,31 @@
+#!/usr/bin/env mkb
+options
+{
+	#strict
+	module_path_append="$AIRPLAY_ROOT/modules/third_party"
+	module_path_append="../../marmalade/CAIRO-PIXMAN"
+}
+subprojects
+{
+	libpng
+	pixman
+	cairo
+}
+
+files
+{
+	testcairo.cpp
+}
+includepaths
+{
+	../../pixman-0.18.0/s3e
+	../../pixman-0.18.0/pixman
+	../../cairo-1.8.10/s3e
+	../../cairo-1.8.10/src
+}
+defines {
+}
+deployments
+{
+	networking='1'
+}

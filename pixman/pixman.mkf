@@ -1,0 +1,80 @@
+upstream
+{
+	url="http://cairographics.org/releases/pixman-0.18.0.tar.gz"
+}
+
+options
+{
+	module_path_append="$AIRPLAY_ROOT/modules/third_party"
+	strict=0
+	extension=start_configure
+}
+
+includepaths
+{
+	.
+	"upstream/pixman/"
+}
+
+files {
+	["Upstream Library Sources"]
+	(./upstream/pixman)
+	pixman-image.c
+	pixman-access.c
+	pixman-access-accessors.c
+	pixman-region16.c
+	pixman-region32.c
+	pixman-combine32.c
+	pixman-combine64.c
+	pixman-utils.c
+	pixman-edge.c
+	pixman-edge-accessors.c
+	pixman-trap.c
+	pixman-timer.c
+	pixman-matrix.c
+	pixman-gradient-walker.c
+	pixman-linear-gradient.c
+	pixman-radial-gradient.c
+	pixman-bits-image.c
+	pixman.c
+	pixman-cpu.c
+	pixman-fast-path.c
+	pixman-implementation.c
+	pixman-solid-fill.c
+	pixman-general.c
+	["Upstream Library Headers"]
+	(./upstream/pixman)
+	pixman.h
+	pixman-accessor.h
+	pixman-arm-common.h
+	pixman-combine32.h
+	pixman-combine64.h
+	pixman-compiler.h
+	pixman-edge-imp.h
+	pixman-private.h
+	pixman-version.h 
+	["Porting patches"]
+	(./)
+	pixman-compiler.h
+}
+
+defines {
+	HAVE_DLFCN_H=1
+	HAVE_INTTYPES_H=1
+	HAVE_MEMORY_H=1
+	HAVE_POSIX_MEMALIGN=1
+	HAVE_PTHREAD_SETSPECIFIC=1
+	HAVE_STDINT_H=1
+	HAVE_STDLIB_H=1
+	HAVE_STRINGS_H=1
+	HAVE_STRING_H=1
+	HAVE_SYS_STAT_H=1
+	HAVE_SYS_TYPES_H=1
+	HAVE_UNISTD_H=1
+
+	PIXMAN_NO_TLS=1
+	
+	PACKAGE="pixman"
+	SIZEOF_LONG=4
+	STDC_HEADERS=1
+}
